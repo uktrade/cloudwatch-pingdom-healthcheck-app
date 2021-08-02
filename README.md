@@ -4,9 +4,10 @@ Allow Pingdom to monitor cloudwatch healthchecks from an AWS account
 
 ## Configuration
 
-Basic configuration, set the following env vars:\
+Set the following env vars:\
 AWS_ACCESS_KEY_ID\
-AWS_SECRET_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY\
+AWS_DEFAULT_REGION
 
 This will check for any alarms in the aws account. If no alarms are active you'll see a 200 OK pingdom XML response.  Otherwise details of any active alarms will be reported along with a 500 status code.
 
