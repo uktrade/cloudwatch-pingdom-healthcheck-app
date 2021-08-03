@@ -16,7 +16,10 @@ You can additionally filter the alarms with the following env vars:
 AWS_ALARM_NAMES: supply a comma separated list of alarm names to check\
 AWS_ALARM_PREFIX: or supply an alarm name prefix
 
+## Caching
+
+A 200 response is cached for 5 seconds by default using the uWSGI cache.  This is to limit the queries made to the AWS API.  Note, the dependence on the uWSGI cache means that the app won't run using `flask run` for local development.
+
 ## TODO:
 
-Add redis for page caching\
 Consider p1/p2 split 
