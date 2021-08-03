@@ -57,8 +57,8 @@ def health_check():
     else:
         status_code = 500
         status = "-------------\n".join(
-            "\n".join([alarm["AlarmName"], alarm["MetricName"], alarm["StateReason"]])
-            for alarm in alarms
+            "\n  ".join([alarm["AlarmName"], alarm["MetricName"], alarm["StateReason"]])
+            for alarm in alarms["MetricAlarms"]
         )
 
     status_text = PINGDOM_TEMPLATE.format(
