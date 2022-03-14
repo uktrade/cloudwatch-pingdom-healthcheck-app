@@ -27,29 +27,41 @@ PINGDOM_TEMPLATE = """
 </pingdom_http_custom_check>
 """
 
-ALARM_NAME_PREFIX = os.environ.get("AWS_ALARM_PREFIX", None)
-ALARM_NAMES = os.environ["AWS_ALARM_NAMES"].split(",") if "AWS_ALARM_NAMES" in os.environ else None
+P1_ALARM_NAME_PREFIX = os.environ.get("P1_AWS_ALARM_PREFIX", None)
+P1_ALARM_NAMES = os.environ["P1_AWS_ALARM_NAMES"].split(",") if "P1_AWS_ALARM_NAMES" in os.environ else None
 
-QUERY_PARAMS = {
+P2_ALARM_NAME_PREFIX = os.environ.get("P2_AWS_ALARM_PREFIX", None)
+P2_ALARM_NAMES = os.environ["P2_AWS_ALARM_NAMES"].split(",") if "P2_AWS_ALARM_NAMES" in os.environ else None
+
+P1_QUERY_PARAMS = {
     "StateValue": "ALARM",
     "MaxRecords": 100,
 }
 
-if ALARM_NAME_PREFIX:
-    params["AlarmNamePrefix"] = ALARM_NAME_PREFIX
-if ALARM_NAMES:
-    params["AlarmNames"] = ALARM_NAMES
+P2_QUERY_PARAMS = {
+    "StateValue": "ALARM",
+    "MaxRecords": 100,
+}
 
-@app.route('/')
+if P1_ALARM_NAME_PREFIX:
+    P1_QUERY_PARAMS["AlarmNamePrefix"] = P1_ALARM_NAME_PREFIX
+if P1_ALARM_NAMES:
+    P1_QUERY_PARAMS["AlarmNames"] = P1_ALARM_NAMES
+
+if P2_ALARM_NAME_PREFIX:
+    P2_QUERY_PARAMS["AlarmNamePrefix"] = P2_ALARM_NAME_PREFIX
+if P2_ALARM_NAMES:
+    P2_QUERY_PARAMS["AlarmNames"] = P2_ALARM_NAMES
+
+
+@app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
+@app.route('/p2', defaults={'query': P2_QUERY_PARAMS})
 @cache.cached(timeout=5)
-def health_check():
-
+def handle_request(query):
     logger.info("Checking for alarms...")
 
     client = boto3.client('cloudwatch')
-    alarms = client.describe_alarms(**QUERY_PARAMS)
-
-    timestamp = "1"
+    alarms = client.describe_alarms(**query)
 
     if not alarms["MetricAlarms"]:
         status_code = 200
@@ -61,6 +73,7 @@ def health_check():
             for alarm in alarms["MetricAlarms"]
         )
 
+    timestamp = "1"
     status_text = PINGDOM_TEMPLATE.format(
         status=status,
         timestamp=timestamp,
