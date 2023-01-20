@@ -3,3 +3,6 @@ flask
 requests
 boto3
 flask-caching
+
+# Pinning dependabot update
+certifi==2022.12.7
