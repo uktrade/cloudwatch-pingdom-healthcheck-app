@@ -1,8 +1,8 @@
-uwsgi
-flask
-requests
-boto3
-flask-caching
+ uwsgi
+ requests
+ boto3
+ flask-caching
 
-# Pinning dependabot update
-certifi==2022.12.7
+ # Pinning dependabot update
+ certifi==2022.12.7
+ flask>=2.2.1
