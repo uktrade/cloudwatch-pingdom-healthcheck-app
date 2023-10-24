@@ -1,0 +1,6 @@
+---
+applications:
+  - name: cloudwatch-pingdom-healthcheck-app
+    buildpacks:
+      - python_buildpack
+    stack: cflinuxfs4
