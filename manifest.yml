@@ -1,0 +1,4 @@
+---
+applications:
+  - name: cloudwatch-pingdom-healthcheck-app
+    stack: cflinuxfs4
