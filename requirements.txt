@@ -28,7 +28,7 @@ flask==3.0.0
     #   flask-caching
 flask-caching==2.1.0
     # via -r requirements.in
-idna==3.4
+idna==3.7
     # via requests
 itsdangerous==2.1.2
     # via flask
