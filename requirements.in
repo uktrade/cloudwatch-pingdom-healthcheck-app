@@ -4,5 +4,5 @@
  flask-caching
 
  # Pinning dependabot update
- certifi==2023.7.22
+ certifi==2024.7.4
  flask>=2.2.1
