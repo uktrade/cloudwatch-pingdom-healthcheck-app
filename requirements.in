@@ -1,8 +1,9 @@
- uwsgi
- requests
- boto3
- flask-caching
+uwsgi
+requests
+flask-caching
 
- # Pinning dependabot update
- certifi==2024.7.4
- flask>=2.2.1
+# Pinning dependabot update
+certifi>=2024.7.4
+flask>=2.2.1
+boto3>=1.35.70
+urllib3>=2.2.2 
