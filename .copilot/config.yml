@@ -1,0 +1,4 @@
+repository: cloudwatch-pingdom-healthcheck-app
+builder:
+  name: paketobuildpacks/builder-jammy-full
+  version: 0.3.339
