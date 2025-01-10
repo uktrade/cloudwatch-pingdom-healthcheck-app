@@ -3,9 +3,9 @@
 # Exit early if something goes wrong
 set -e
 
-apt-get update && apt-get install -y libxml2
+yum install -y libxml2
 
-pip install requirements.txt
+pip install -r requirements.txt
 
 
 # Add commands below to run as part of the install phase
