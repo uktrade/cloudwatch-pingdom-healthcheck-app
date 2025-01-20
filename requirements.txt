@@ -55,7 +55,7 @@ urllib3==2.2.3
     #   -r requirements.in
     #   botocore
     #   requests
-uwsgi==2.0.22
+uwsgi==2.0.28
     # via -r requirements.in
 werkzeug==3.0.6
     # via flask
