@@ -5,7 +5,7 @@ import os
 import boto3
 
 from flask import Flask, make_response
-from flask_caching import Cache
+#from flask_caching import Cache
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -14,11 +14,11 @@ handler.setLevel(logging.INFO)
 logger.addHandler(handler)
 
 app = Flask(__name__)
-cache = Cache(app,config={
-        'CACHE_TYPE': 'flask_caching.contrib.uwsgicache.UWSGICache',
-        'CACHE_UWSGI_NAME': 'pagecache',
-    }
-)
+# cache = Cache(app,config={
+#        'CACHE_TYPE': 'flask_caching.contrib.uwsgicache.UWSGICache',
+#        'CACHE_UWSGI_NAME': 'pagecache',
+#    }
+#)
 
 PINGDOM_TEMPLATE = """
 <pingdom_http_custom_check>
@@ -56,7 +56,7 @@ if P2_ALARM_NAMES:
 
 @app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
 @app.route('/p2', defaults={'query': P2_QUERY_PARAMS})
-@cache.cached(timeout=5)
+#@cache.cached(timeout=5)
 def handle_request(query):
     logger.info("Checking for alarms...")
 
