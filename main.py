@@ -82,3 +82,9 @@ def handle_request(query):
     response = make_response(status_text, status_code)
     response.mimetype = "text/xml"
     return response
+
+@app.route('/pingdom/ping.xml')
+def internal_healthcheck():
+    response = make_response(PINGDOM_TEMPLATE.format(status="OK", timestamp="1"), 200)
+    response.mimetype = "text/xml"
+    return response
