@@ -1,5 +1,3 @@
-@app.route('/p1', defaults={'query': P1_QUERY_PARAMS})#!/usr/bin/env python
-
 import logging
 import os
 import boto3
