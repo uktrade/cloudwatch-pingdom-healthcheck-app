@@ -53,7 +53,7 @@ if P2_ALARM_NAMES:
 
 
 # @app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
-@app.route('/p2', defaults={'query': P2_QUERY_PARAMS})
+# @app.route('/p2', defaults={'query': P2_QUERY_PARAMS})
 @app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
 #@cache.cached(timeout=5)
 def handle_request(query):
