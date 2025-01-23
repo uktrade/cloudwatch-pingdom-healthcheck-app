@@ -54,8 +54,9 @@ if P2_ALARM_NAMES:
     P2_QUERY_PARAMS["AlarmNames"] = P2_ALARM_NAMES
 
 
-@app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
+
 @app.route('/p2', defaults={'query': P2_QUERY_PARAMS})
+@app.route('/p1', defaults={'query': P1_QUERY_PARAMS})
 #@cache.cached(timeout=5)
 def handle_request(query):
     logger.info("Checking for alarms...")
@@ -80,11 +81,5 @@ def handle_request(query):
     )
 
     response = make_response(status_text, status_code)
-    response.mimetype = "text/xml"
-    return response
-
-@app.route('/pingdom/ping.xml')
-def internal_healthcheck():
-    response = make_response(PINGDOM_TEMPLATE.format(status="OK", timestamp="1"), 200)
     response.mimetype = "text/xml"
     return response
