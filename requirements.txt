@@ -55,7 +55,12 @@ urllib3==2.2.3
     #   -r requirements.in
     #   botocore
     #   requests
-uwsgi==2.0.22
-    # via -r requirements.in
 werkzeug==3.0.6
     # via flask
+gunicorn>=22.0.0
+
+certifi>=2024.7.4
+flask>=2.2.1
+boto3>=1.35.70
+urllib3>=2.2.2
+requests>=2.32.0 

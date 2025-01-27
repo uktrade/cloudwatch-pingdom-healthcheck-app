@@ -1,9 +1,0 @@
-uwsgi
-flask-caching
-
-# Pinning dependabot update
-certifi>=2024.7.4
-flask>=2.2.1
-boto3>=1.35.70
-urllib3>=2.2.2
-requests>=2.32.0 

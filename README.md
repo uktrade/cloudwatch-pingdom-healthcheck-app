@@ -18,7 +18,7 @@ AWS_ALARM_PREFIX: or supply an alarm name prefix
 
 ## Caching
 
-A 200 response is cached for 5 seconds by default using the uWSGI cache.  This is to limit the queries made to the AWS API.  Note, the dependence on the uWSGI cache means that the app won't run using `flask run` for local development.
+Before migrating to new the Platform, the app was using uWSGI cache. As of now the cache is diasabled for gunicorn.
 
 ## TODO:
 
